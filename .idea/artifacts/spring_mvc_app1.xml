@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jpackage" name="spring-mvc-app1">
+    <output-path>$PROJECT_DIR$/out/artifacts/spring_mvc_app1</output-path>
+    <root id="root">
+      <element id="archive" name="spring_mvc_app1.jar">
+        <element id="module-output" name="spring-mvc-app1" />
+      </element>
+    </root>
+  </artifact>
+</component>
