@@ -2,19 +2,18 @@ package org.example.config;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import org.jspecify.annotations.Nullable;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
-    protected Class<?> @Nullable [] getRootConfigClasses() {
+    protected Class<?> [] getRootConfigClasses() {
         return null;
     }
 
     @Override
-    protected Class<?> @Nullable [] getServletConfigClasses() {
+    protected Class<?> [] getServletConfigClasses() {
         return new Class[] {SpringConfig.class};
     }
 

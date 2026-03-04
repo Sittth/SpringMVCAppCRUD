@@ -39,6 +39,8 @@ build/
 # Project exclude paths
 /out/
 
+.idea
+
 # Local database config
 src/main/resources/database.properties
 src/main/resources/hibernate.properties

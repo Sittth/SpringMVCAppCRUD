@@ -1,19 +1,21 @@
 package org.example.util;
 
-import org.example.dao.PersonDAO;
 import org.example.models.Person;
+import org.example.repositories.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.util.Optional;
+
 @Component
 public class PersonValidator implements Validator {
-    private final PersonDAO personDAO;
+    private final PeopleRepository peopleRepository;
 
     @Autowired
-    public PersonValidator(PersonDAO personDAO) {
-        this.personDAO = personDAO;
+    public PersonValidator(PeopleRepository  peopleRepository) {
+        this.peopleRepository = peopleRepository;
     }
 
     @Override
@@ -25,7 +27,12 @@ public class PersonValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Person person = (Person) target;
 
-        if (personDAO.findByEmail(person.getEmail()).isPresent()) {
+        Optional<Person> existingPerson =
+                peopleRepository.findByEmail(person.getEmail());
+
+        if (existingPerson.isPresent()
+                && existingPerson.get().getId() != person.getId()) {
+
             errors.rejectValue("email", "", "Email is already in use");
         }
     }
